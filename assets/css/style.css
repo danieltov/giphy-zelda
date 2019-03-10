@@ -1,3 +1,9 @@
 .img-container {
     margin: 10px;
 }
+
+@media (max-width: 600px) {
+    .img-container {
+        max-width: 100%;
+    }
+}
