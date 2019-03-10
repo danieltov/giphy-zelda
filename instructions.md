@@ -37,15 +37,7 @@ In this assignment, you'll use the GIPHY API to make a dynamic web page that pop
 2. Your app should take the topics in this array and create buttons in your HTML.
     - Try using a loop that appends a button for each string in the array.
 
-````const renderButtons = () => {
-topics.forEach(function(el){
-\$("#buttons-area").append(`<button>${el}</button>`)
-})
-}```
-
-3. When the user clicks on a button, the page should grab 10 static, non-animated gif images from the GIPHY API and place them on the page.
-
-const apikey = 'Hngz7Sb3gypz2t0EcdtvnUwIIPRnQZj4'
+3) When the user clicks on a button, the page should grab 10 static, non-animated gif images from the GIPHY API and place them on the page.
 
 4. When the user clicks one of the still GIPHY images, the gif should animate. If the user clicks the gif again, it should stop playing.
 
@@ -113,4 +105,7 @@ After completing the homework please add the piece to your portfolio. Make sure 
 If you have any questions about this project or the material we have covered, please post them in the community channels in slack so that your fellow developers can help you! If you're still having trouble, you can come to office hours for assistance from your instructor and TAs.
 
 **Good Luck!**
-````
+
+```
+
+```

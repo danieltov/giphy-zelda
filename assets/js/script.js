@@ -23,7 +23,7 @@ const renderButtons = () => {
 const printImages = x => {
     $('.area').empty();
     keyword = x.target.innerHTML;
-    query = `http://api.giphy.com/v1/gifs/search?q=${keyword}&api_key=${apikey}&limit=10`;
+    query = `https://api.giphy.com/v1/gifs/search?q=${keyword}&api_key=${apikey}&limit=10`;
     console.log(query);
     $.ajax({ url: query, method: 'GET' }).then(function(res) {
         appendImages(res);
