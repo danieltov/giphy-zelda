@@ -1,5 +1,56 @@
+body {
+    background: url(../img/bg.png);
+}
+
+button,
+.img-container > img,
+input {
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+.card-body {
+    min-height: 350px;
+}
+
 .img-container {
     margin: 10px;
+}
+
+img {
+    min-width: 480px;
+}
+
+img:hover {
+    cursor: pointer;
+}
+
+.alert {
+    display: none;
+}
+
+.fa-heart {
+    color: red;
+}
+.fa-heart:hover {
+    color: crimson;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.faved:hover {
+    cursor: not-allowed;
+}
+
+.faves {
+    display: none;
+}
+
+.faves > h2 {
+    text-align: center;
+}
+
+.btn-block {
+    margin-top: 5px;
 }
 
 @media (max-width: 600px) {
