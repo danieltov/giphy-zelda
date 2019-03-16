@@ -164,7 +164,7 @@ $(document).on('click', 'img', function() {
             .removeClass('static')
             .attr('src', `${base}/${id}/${gif}`)
             .parent()
-            .prepend(ms2)
+            .prepend(msg2)
             .delay(500)
             .find('.alert-info')
             .slideDown()
