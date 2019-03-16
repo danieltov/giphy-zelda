@@ -13,7 +13,8 @@ let topics = [
     query = undefined,
     keyword = undefined,
     offset = 0,
-    msg = $('#message').html(),
+    msg1 = $('#message1').html(),
+    msg2 = $('#message2').html(),
     faves = JSON.parse(localStorage.getItem('favegifs'));
 
 // check if faves array exists in local storage
@@ -36,19 +37,20 @@ const printImages = x => {
     keyword = x.target.innerHTML;
     query = `https://api.giphy.com/v1/gifs/search?q=${keyword}&api_key=${apikey}&limit=10`;
     $.ajax({ url: query, method: 'GET' }).then(function(res) {
+        printMessage();
         appendImages(res);
         appendButtons(res);
     });
 };
 
-const gimmeMore = () => {
-    offset += 10;
-    $.ajax({ url: `${query}&offset=${offset}`, method: 'GET' }).then(function(
-        res
-    ) {
-        appendImages(res);
-        appendButtons(res);
-    });
+const printMessage = () => {
+    $('.alert-success').remove();
+    $('.area')
+        .append(msg1)
+        .find('.alert-success')
+        .slideDown()
+        .delay(2000)
+        .slideUp();
 };
 
 const appendImages = x => {
@@ -103,6 +105,16 @@ const appendButtons = x => {
     }
 };
 
+const gimmeMore = () => {
+    offset += 10;
+    $.ajax({ url: `${query}&offset=${offset}`, method: 'GET' }).then(function(
+        res
+    ) {
+        appendImages(res);
+        appendButtons(res);
+    });
+};
+
 const renderFaves = () => {
     // empty out faves area
     $('.faves').empty();
@@ -145,17 +157,16 @@ $('#add-topic').on('keypress', function(event) {
 $(document).on('click', '.topic', printImages);
 
 $(document).on('click', 'img', function() {
-    $('.alert').remove();
-    $('#message').remove();
+    $('.alert-info').remove();
     let id = $(this).attr('data-id');
     if ($(this).hasClass('static')) {
         $(this)
             .removeClass('static')
             .attr('src', `${base}/${id}/${gif}`)
             .parent()
-            .prepend(msg)
+            .prepend(ms2)
             .delay(500)
-            .find('.alert')
+            .find('.alert-info')
             .slideDown()
             .delay(1250)
             .slideUp();
@@ -236,4 +247,6 @@ $(document).on('click', '.remove-fave', function() {
 
 $(function() {
     renderButtons();
+    $('#message1').remove();
+    $('#message2').remove();
 });
