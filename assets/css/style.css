@@ -63,8 +63,15 @@ a.btn {
     display: none;
 }
 
+.faves > h1 {
+    font-weight: lighter;
+    text-align: center;
+    margin: 1rem;
+}
+
 .faves > h2 {
     text-align: center;
+    margin: 1rem;
 }
 
 .btn-block {

@@ -104,8 +104,10 @@ const appendButtons = x => {
 };
 
 const renderFaves = () => {
-    // empty out area
+    // empty out faves area
+    $('.faves').empty();
     $('.area').empty();
+    $('.faves').html(`<h1>Your Favorite <em>Legend of Zelda</em> GIFs</h1>`);
 
     // loop through array to render faves
     for (let i = 0; i < faves.length; i++) {
