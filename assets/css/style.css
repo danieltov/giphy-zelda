@@ -12,12 +12,22 @@ input {
     min-height: 350px;
 }
 
+#buttons-area {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+#buttons-area > button {
+    margin-bottom: 1em;
+}
+
 .img-container {
     margin: 10px;
 }
 
 img {
-    min-width: 480px;
+    width: 480px;
 }
 
 img:hover {
@@ -54,7 +64,11 @@ img:hover {
 }
 
 @media (max-width: 600px) {
-    .img-container {
-        max-width: 100%;
+    #buttons-area {
+        flex-direction: column;
+    }
+
+    img {
+        width: 300px;
     }
 }
