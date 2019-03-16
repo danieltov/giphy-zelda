@@ -34,17 +34,16 @@ img:hover {
     cursor: pointer;
 }
 
-.alert {
-    display: none;
+a.btn {
+    color: white;
 }
 
-.fa-heart {
-    color: red;
+.fas {
+    color: white;
 }
-.fa-heart:hover {
-    color: crimson;
-    cursor: pointer;
-    transition: color 0.3s ease;
+
+.alert {
+    display: none;
 }
 
 .faved:hover {

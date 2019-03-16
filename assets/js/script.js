@@ -16,7 +16,7 @@ let topics = [
     msg = $('#message').html(),
     faves = JSON.parse(localStorage.getItem('favegifs'));
 
-// check if faves exists in local storage
+// check if faves array exists in local storage
 if (!Array.isArray(faves)) {
     faves = [];
 }
@@ -36,7 +36,6 @@ const printImages = x => {
     keyword = x.target.innerHTML;
     query = `https://api.giphy.com/v1/gifs/search?q=${keyword}&api_key=${apikey}&limit=10`;
     $.ajax({ url: query, method: 'GET' }).then(function(res) {
-        console.log(res);
         appendImages(res);
         appendButtons(res);
     });
@@ -54,7 +53,6 @@ const gimmeMore = () => {
 
 const appendImages = x => {
     $.each(x.data, function(_i, val) {
-        let rating = val.rating;
         let id = val.id;
         let imgContainer = $('<figure>')
             .addClass('img-container')
@@ -66,25 +64,28 @@ const appendImages = x => {
                 'data-id': id
             });
         imgContainer.append(img);
-        appendMeta(imgContainer, rating, id, gif);
+        appendMeta(imgContainer, `${base}/${id}/${gif}`);
         $('.area').append(imgContainer);
     });
 };
 
-const appendMeta = (container, rating, id, url) => {
+const appendMeta = (container, url) => {
     let dl = $('<a>')
         .attr({ target: '_blank', href: url })
+        .addClass('btn btn-block bg-success')
         .html(`<i class="fas fa-download"></i>`);
     dl = dl
         .wrapAll('<div>')
         .parent()
         .html();
-    let fave = $('<a>').html(`<i class="fas fa-heart" />`);
+    let fave = $('<button>')
+        .addClass('btn btn-block bg-danger faveBtn')
+        .html(`<i class="fas fa-heart" />`);
     fave = fave
         .wrapAll('<div>')
         .parent()
         .html();
-    let meta = $('<p>').html(`Rating: ${rating.toUpperCase()} ${dl} ${fave}`);
+    let meta = $('<p>').html(`${dl} ${fave}`);
     container.append(meta);
 };
 
@@ -154,7 +155,7 @@ $(document).on('click', 'img', function() {
             .delay(500)
             .find('.alert')
             .slideDown()
-            .delay(1000)
+            .delay(1250)
             .slideUp();
     } else {
         $(this)
@@ -163,10 +164,9 @@ $(document).on('click', 'img', function() {
     }
 });
 
-$(document).on('click', '.fa-heart', function() {
+$(document).on('click', '.faveBtn', function() {
     if (!$(this).hasClass('faved')) {
         let faveItem = $(this)
-            .parent()
             .parent()
             .prev();
 
@@ -183,7 +183,7 @@ $(document).on('click', '.fa-heart', function() {
         localStorage.setItem('favegifs', JSON.stringify(faves));
 
         // disable fave button
-        $(this).addClass('faved');
+        $(this).slideUp();
     } else {
         alert('Sweet, this GIF is already in your favorites!');
     }
@@ -213,7 +213,9 @@ $('#show-faves').on('click', function() {
             `<h2>Looks like you haven't favorited any gifs yet!</h2>`
         );
     } else {
-        renderFaves(faves);
+        setTimeout(function() {
+            renderFaves(faves);
+        }, 600);
     }
 });
 
