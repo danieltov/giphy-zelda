@@ -1,6 +1,4 @@
-# The Legend of Zelda GIF Generator, v1
-
-### Handmade in Orem, UT by [dt](https://github.com/danieltov)
+# The Legend of Zelda GIF Generator, v1 ([View Deployment](https://danieltov.github.io/giphy-zelda/))
 
 Powered by the Giphy API, this _Legend of Zelda_ GIF Generator is the best place to search and save your favorite _Zelda_ GIFs. The web app is fully responsive, so it works on mobile as well as desktop.
 
@@ -18,7 +16,7 @@ Powered by the Giphy API, this _Legend of Zelda_ GIF Generator is the best place
 -   For the best quality, this app loads the original (largest) GIF file of each entry, which means you may have to wait a little to get the GIF going. I believe it's worth the wait.
 -   Earlier versions of this app displayed the GIF rating. Version 1 omits this meta-data because _TLOZ_ is a family-friendly franchise so using this app as intended will not render any mature content. Abuse of this app may result in mature content. Which, like, live your best life, you wild thing.
 
-## Made possible by my sponsors
+## Made possible by the following technologies
 
 -   Giphy API
 -   jQuery 3
